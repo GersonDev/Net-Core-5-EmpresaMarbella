@@ -1,5 +1,5 @@
-using EMPRESAMARBELLA.dataSourcesContext.Entities;
-using EMPRESAMARBELLA.dominio.repositoriosServices;
+using EMPRESAMARBELLA.DataSources.Entities;
+using EMPRESAMARBELLA.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

@@ -1,7 +1,7 @@
-﻿using EMPRESAMARBELLA.dominio.modelos;
+﻿using EMPRESAMARBELLA.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EMPRESAMARBELLA.dataSourcesContext.Entities
+namespace EMPRESAMARBELLA.DataSources.Entities
 {
     public partial class UsuariosDbContext:DbContext
     {

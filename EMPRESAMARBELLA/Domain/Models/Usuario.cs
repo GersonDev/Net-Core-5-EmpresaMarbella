@@ -1,4 +1,4 @@
-﻿namespace EMPRESAMARBELLA.dominio.modelos
+﻿namespace EMPRESAMARBELLA.Domain.Models
 {
     public partial class Usuario
     {
