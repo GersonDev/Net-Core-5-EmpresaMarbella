@@ -23,7 +23,7 @@ namespace EMPRESAMARBELLA
                 {
                     webBuilder
                     .UseUrls("http://192.168.0.103:5001")
-                    .UseStartup<Startup>()
+                    .UseStartup<Startup>();
                 });
     }
 }
