@@ -16,11 +16,14 @@ namespace EMPRESAMARBELLA
             CreateHostBuilder(args).Build().Run();
         }
 
+        // UseUrls to allowed for the public access(mobile )
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    .UseUrls("http://192.168.0.103:5001")
+                    .UseStartup<Startup>()
                 });
     }
 }
