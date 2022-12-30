@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 /**
- *
+ * 
  */
 namespace EMPRESAMARBELLA.Domain.Services
 {
@@ -55,6 +55,19 @@ namespace EMPRESAMARBELLA.Domain.Services
                 return result; 
             }
 
+            return null;
+        }
+
+        public async Task<Usuario> DeleteUsuario(int usuarioId) {
+
+            var result = await usuariosDbContext.Usuarios
+                    .FirstOrDefaultAsync(e => e.Id == usuarioId);
+
+            if (result != null) {
+                usuariosDbContext.Usuarios.Remove(result);
+                await usuariosDbContext.SaveChangesAsync();
+                return result;
+            }
             return null;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using EMPRESAMARBELLA.Domain.Models;
 using EMPRESAMARBELLA.Domain.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -44,7 +45,6 @@ namespace EMPRESAMARBELLA.Controllers
         }
 
         [HttpPost]
-        [Route("Usuarios")]
         public async Task<ActionResult<Usuario>> PostUsuarios(Usuario usuario)
         {
             var result = await usuarioService.AddUsuario(usuario);
@@ -59,17 +59,38 @@ namespace EMPRESAMARBELLA.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Usuario>> UpdateUsuario(int id, Usuario usuario){
+        public async Task<ActionResult<Usuario>> UpdateUsuario(int id, Usuario usuario) {
 
             var usuarioToUpdate = await usuarioService.GetUsuarioById(id);
 
-            if(usuarioToUpdate == null)
+            if (usuarioToUpdate == null)
             {
                 return NotFound($"Usuario with ID = {id} not found");
             }
 
             return await usuarioService.PutUsuario(usuario);
-        
+
+        }
+
+        /**
+         * Remember this will response with 204 because we cannot response the deleted object
+         */
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Usuario>> DeleteUsuario(int id) {
+
+            try
+            {
+                var usuarioToDelete = await usuarioService.DeleteUsuario(id);
+
+                if (usuarioToDelete == null)
+                {
+                    return NotFound($"Usuario con ID = {id} not found");
+                }
+                return await usuarioService.DeleteUsuario(id);
+            }
+            catch (Exception) {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
         }
     }
 }
